@@ -103,3 +103,7 @@ button {
   color: white;
   font-size: 20px;
 }
+
+.completato {
+  text-decoration: line-through;
+}
