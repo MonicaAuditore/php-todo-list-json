@@ -3,18 +3,23 @@
 //recupero le info dal file database, ho una stringa;
 $doDoListString = file_get_contents('database.json');
 
-var_dump($doDoListString);
-
-// trasformo le info, la stringa, in una variabile php. Grazie a true, 
-// le info sono restituite come array associativo;
+//trasformo le info, la stringa JSON, in un array php; 
+//le info sono restituite come array associativo grazie a true;
 $doDoList = json_decode($doDoListString, true);
 
-var_dump($doDoList);
+//modifico la risposta dell'api
+$response = [
+    'lista' => $doDoList,
+    'message' => 'ok'
+];
 
-//trasformo i dati json in php, ottengo una stringa;
-$jsonLista = json_encode($doDoList);
+//trasformo i dati PHP in una stringa JSON;
+$jsonResponse = json_encode($response);
+
+//indico al client che il contenuto della risposta sarà in formato JSON
+header('Content-Type: application/json');
 
 //stampo la stringa;
-echo $jsonLista;
+echo $jsonResponse;
 
 ?>
