@@ -34,7 +34,10 @@
           <div class="todoList">
             <ul>
               <li v-for="(item, index) in lista">
-                <h3 :class="{ 'completato': item.done === 'true' }">
+                <h3
+                  :class="{ 'completato': item.done === true }"
+                  @click="taskCompletato(index)"
+                >
                   {{ item.text }}
                 </h3>
                 <span class="bidone" @click="eliminaElemento(index)"

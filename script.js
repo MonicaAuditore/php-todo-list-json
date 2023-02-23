@@ -14,6 +14,10 @@ createApp({
     };
   },
   methods: {
+    taskCompletato(index) {
+      this.lista[index].done = !this.lista[index].done;
+    },
+
     aggiungiItem() {
       //ogni volta che viene aggiunto un item viene chiamato questo metodo
       console.log(this.newitem);
