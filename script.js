@@ -16,6 +16,11 @@ createApp({
   methods: {
     eliminaElemento(index) {
       this.lista.splice(index, 1); // Rimuovo l'elemento dalla lista
+      // Salva la lista aggiornata nel database
+      axios
+        .post(this.url, { lista: this.lista })
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
     },
 
     taskCompletato(index) {
