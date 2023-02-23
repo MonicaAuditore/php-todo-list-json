@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      url: "http://localhost/php-todo-list-json/api.php",
       addUrl: "http://localhost/php-todo-list-json/create.php",
       lista: [],
       newitem: {
@@ -12,22 +13,22 @@ createApp({
     };
   },
   methods: {
-    // eliminaElemento(index) {
-    //   this.lista.splice(index, 1);
-    // },
-
     aggiungiItem() {
       console.log(this.newitem);
       axios
         .post(
           this.addUrl,
           {
-            item: this.newitem,
+            newitem: this.newitem,
           },
           { headers: { "Content-Type": "multipart/form-data" } }
         )
         .then((response) => {
           console.log(response);
+          this.lista = response.data;
+          this.newitem.text = "";
+          this.newitem.done = false;
+          this.created(); // chiamo manualmente il metodo create
         });
     },
   },
@@ -38,5 +39,3 @@ createApp({
     });
   },
 }).mount("#app");
-
-// "http://localhost/php-todo-list-json/api.php"

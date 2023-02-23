@@ -7,13 +7,13 @@ $doDoListString = file_get_contents('database.json');
 $doDoList = json_decode($doDoListString, true);
 
 //aggiungo il nuovo item;
-$newMemoDecoded = [
+$newMemo = [
   'text' => $_POST['newitem']['text'],
   'done' => $_POST['newitem']['done'],
 ];
 
 //aggiungo il nuovo item all'array esistente
-$doDoList[] = $newMemoDecoded;
+$doDoList[] = $newMemo;
 
 //Stampo nel database l'array con il nuovo item
 file_put_contents('database.json', json_encode($doDoList));
