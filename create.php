@@ -1,12 +1,12 @@
 <?php
 
-//mi prendo prima tutti i dati dal database;
+//prendo i dati dal database;
 $doDoListString = file_get_contents('database.json');
 
-//li trasformo
+//trasformo la stringa JSON in un array associativo
 $doDoList = json_decode($doDoListString, true);
 
-//aggiungo il nuovo item;
+//creo un nuovo item con i dati inviati tramite POST
 $newMemo = [
   'text' => $_POST['newitem']['text'],
   'done' => $_POST['newitem']['done'],
@@ -15,9 +15,10 @@ $newMemo = [
 //aggiungo il nuovo item all'array esistente
 $doDoList[] = $newMemo;
 
-//Stampo nel database l'array con il nuovo item
+//salvo l'array aggiornato nel database, sovrascrivendo quello esistente
 file_put_contents('database.json', json_encode($doDoList));
 
+//imposto l'header della risposta come JSON e stampo l'array aggiornato come JSON
 header ('Content-Type: application/json');
 echo json_encode($doDoList);
 
