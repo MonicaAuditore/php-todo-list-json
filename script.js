@@ -6,12 +6,16 @@ createApp({
       lista: [],
     };
   },
-  methods: {},
+  methods: {
+    eliminaElemento(index) {
+      this.lista.splice(index, 1);
+    },
+  },
   created() {
-    axios
-      .get("http://localhost/php-todo-list-json/api.php")
-      .then((response) => {
-        this.lista = response.data.lista;
-      });
+    axios.get("./api.php").then((response) => {
+      this.lista = response.data.lista;
+    });
   },
 }).mount("#app");
+
+// "http://localhost/php-todo-list-json/api.php"
