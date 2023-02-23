@@ -43,13 +43,19 @@
               </li>
             </ul>
           </div>
-          <form class="formMemo" action="" method="get">
+          <form
+            class="formMemo"
+            action="create.php"
+            method="POST"
+            @submit.prevent="aggiungiItem()"
+          >
             <label for="memo"></label>
             <input
               type="text"
               name="memo"
               id="memo"
               placeholder="Inserisci elemento..."
+              v-model="newitem.text"
               required
             />
             <button type="submit">Inserisci</button>
