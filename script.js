@@ -14,6 +14,10 @@ createApp({
     };
   },
   methods: {
+    eliminaElemento(index) {
+      this.lista.splice(index, 1); // Rimuovo l'elemento dalla lista
+    },
+
     taskCompletato(index) {
       this.lista[index].done = !this.lista[index].done;
     },
