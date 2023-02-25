@@ -47,6 +47,7 @@ createApp({
           console.log("Task done modificato con successo");
         });
     },
+
     addNewTask() {
       axios
         //per inviare i dati usiamo post
@@ -68,6 +69,7 @@ createApp({
         });
     },
   },
+
   created() {
     //per andare a prendere i dati usiamo get
     axios.get("./api.php").then((response) => {

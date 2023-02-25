@@ -29,5 +29,4 @@ $todoArrayEncoded = json_encode($todoArray);
 //Questa funzione prende due argomenti, il primo è dove devo mettere i file, il secondo è il file
 file_put_contents('database.json', $todoArrayEncoded);
 
-
 ?>

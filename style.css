@@ -22,11 +22,18 @@ h3 {
 .main {
   background-image: linear-gradient(
     to right top,
-    #4b4453,
-    #4d445b,
-    #4f4563,
-    #50456b,
-    #504674
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
   );
   min-height: 100vh;
   width: 100%;
