@@ -3,57 +3,54 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      url: "http://localhost/php-todo-list-json/api.php",
-      addUrl: "http://localhost/php-todo-list-json/create.php",
-      lista: [], // array di item
-      // nuovo item che verrà aggiunto
-      newitem: {
-        text: "",
-        done: false,
-      },
+      lista: [],
+      newTask: "",
     };
   },
   methods: {
-    eliminaElemento(index) {
-      this.lista.splice(index, 1); // Rimuovo l'elemento dalla lista
-      // Salva la lista aggiornata nel database
+    deleteTask(index) {
       axios
-        .post(this.url, { lista: this.lista })
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error));
-    },
-
-    taskCompletato(index) {
-      this.lista[index].done = !this.lista[index].done;
-    },
-
-    aggiungiItem() {
-      //ogni volta che viene aggiunto un item viene chiamato questo metodo
-      console.log(this.newitem);
-      axios //chiamata axios per aggiungere il nuovo item al server
+        //per inviare i dati usiamo post
         .post(
-          this.addUrl,
+          "./delete.php",
+          //secondo argomento: con il metoto get usavamo params, con il metodo post quello che vogliamo inviare è un oggetto normale
           {
-            newitem: this.newitem,
+            deleteText: this.lista[index].text,
           },
+          //questo serve per dire che i dati arrivano da un form, è una coppia chiave:valore
           { headers: { "Content-Type": "multipart/form-data" } }
         )
         .then((response) => {
-          //qui la chiamata è completa
-          console.log(response);
-          this.lista = response.data; //aggiorno la lista degli item
-          this.newitem.text = ""; //svuoto il campo dell'input text
-          this.newitem.done = false; //resetto il campo del done
-          this.created(); //chiamo il metodo create per aggiornare la lista degli item
+          this.lista = response.data;
+        });
+    },
+
+    changeDone(index) {
+      this.lista[index].done = !this.lista[index].done;
+    },
+    inserisciNewTask() {
+      axios
+        //per inviare i dati usiamo post
+        .post(
+          "./create.php",
+          //secondo argomento: con il metoto get usavamo params, con il metodo post quello che vogliamo inviare è un oggetto normale
+          {
+            newtext: this.newTask,
+          },
+          //questo serve per dire che i dati arrivano da un form, è una coppia chiave:valore
+          { headers: { "Content-Type": "multipart/form-data" } }
+        )
+        .then((response) => {
+          this.lista = response.data;
+          this.newTask.text = ""; //svuoto il campo dell'input text
         });
     },
   },
-
   created() {
-    // metodo chiamato all'avvio dell'applicazione Vue
+    //per andare a prendere i dati usiamo get
     axios.get("./api.php").then((response) => {
-      //effettua una chiamata Axios per ottenere la lista degli item dal server
-      this.lista = response.data.lista; //aggiorna la lista degli item
+      this.lista = response.data;
+      console.log(this.lista);
     });
   },
 }).mount("#app");

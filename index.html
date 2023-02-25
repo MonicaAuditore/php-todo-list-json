@@ -22,7 +22,7 @@
     />
     <!-- fine link font awasome -->
     <link rel="stylesheet" href="style.css" />
-    <title>PHP ToDo List JSON</title>
+    <title>PHP ToDo List JSON copia</title>
   </head>
   <body>
     <div id="app">
@@ -33,14 +33,12 @@
           </div>
           <div class="todoList">
             <ul>
-              <li v-for="(item, index) in lista">
-                <h3
-                  :class="{ 'completato': item.done === true }"
-                  @click="taskCompletato(index)"
-                >
-                  {{ item.text }}
-                </h3>
-                <span class="bidone" @click="eliminaElemento(index)"
+              <li
+                v-for="(singletask, index) in lista"
+                :class="{'completato' : singletask.done}"
+              >
+                <h3 @click="changeDone(index)">{{ singletask.text }}</h3>
+                <span class="bidone" @click="deleteTask(index)"
                   ><i class="icon fa-solid fa-trash-can"></i
                 ></span>
               </li>
@@ -50,15 +48,15 @@
             class="formMemo"
             action="create.php"
             method="POST"
-            @submit.prevent="aggiungiItem()"
+            @submit.prevent="inserisciNewTask()"
           >
             <label for="memo"></label>
             <input
               type="text"
               name="memo"
               id="memo"
+              v-model="newTask"
               placeholder="Inserisci elemento..."
-              v-model="newitem.text"
               required
             />
             <button type="submit">Inserisci</button>
