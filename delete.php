@@ -17,8 +17,9 @@ foreach($todoArray as $index => $singleTask) {
 
   if ($singleTask['text'] === $newDeletetext) {
     unset($todoArray[$index]);
+    break;
   }
-
+  
 };
 
 //trasformo con encode il nuovo array aggiornato in json
