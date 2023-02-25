@@ -21,7 +21,12 @@ createApp({
           { headers: { "Content-Type": "multipart/form-data" } }
         )
         .then((response) => {
-          this.lista = response.data;
+          // Rimuovi il task dall'array locale, i dati ritornano indietro modificati e bisogna aggiornare l'array lista
+          // il metodo splice prende come primo argomento l'indice dell'elemento da rimuovere,
+          //e come secondo argomento il numero di elementi da rimuovere a partire dall'indice specificato
+          this.lista.splice(index, 1);
+          // Visualizza un messaggio di successo
+          console.log("Task eliminato con successo");
         });
     },
 
@@ -41,7 +46,10 @@ createApp({
           { headers: { "Content-Type": "multipart/form-data" } }
         )
         .then((response) => {
-          this.lista = response.data;
+          const newTask = { text: this.newTask, done: false };
+          this.lista.push(newTask);
+          this.newTask = "";
+          console.log("Task aggiunto con successo");
           this.newTask.text = ""; //svuoto il campo dell'input text
         });
     },

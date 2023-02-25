@@ -9,13 +9,16 @@ $todoArray = json_decode($doDoListString, true);
 //questi sono i dati che ho inviato, vengono presi in questo modo
 $newDeletetext = $_POST['deleteText'];
 
-//tolgo il task da eliminare dall'array $todoArray
-//la sintassi del ciclo foreach prevede due variabili, una per l'indice corrente $index e una per il valore corrente dell'array
+//tolgo il task da eliminare dall'array $todoArray = confronto $newDeletetext (index del click in html + testo corrispondente) con indice + testo dell'array del database;
+//la sintassi del ciclo foreach prevede due variabili, 
+//una per l'indice corrente: $index (di $todoArray) e una per il valore corrente dell'array; $singleTask (di $todoArray); 
+//stiamo ciclando sull'array del database $todoArray
 foreach($todoArray as $index => $singleTask) {
 
   if ($singleTask['text'] === $newDeletetext) {
     unset($todoArray[$index]);
   }
+
 };
 
 //trasformo con encode il nuovo array aggiornato in json

@@ -6,9 +6,10 @@ nome repo: php-todo-list-json
 PARTE I
 
 Descrizione:
-Dobbiamo creare una web-app che permetta di leggere una lista di Todo.
+Creare una web-app che permetta di leggere una lista di Todo.
 Deve essere anche gestita la persistenza dei dati leggendoli da un file JSON.
-Stack
+
+Stack:
 Html, CSS, VueJS (importato tramite CDN), axios, PHP
 
 Bonus:
@@ -17,7 +18,7 @@ Mostrare lo stato del task → se completato, barrare il testo
 PARTE II
 
 Descrizione:
-Aggiungiamo la possibilità di scrivere nella lista di Todo.
+Aggiungere la possibilità di scrivere nella lista di Todo.
 Creare un apposito form in cui è possibile aggiungere il testo di un nuovo task.
 La sottomissione del form verrà inviata ad una nuova pagina che si occuperà di salvare il nuovo task nella lista dei Todo.
 Estendiamo la gestione della persistenza dei dati scrivendo le modifiche nel file JSON utilizzato.
