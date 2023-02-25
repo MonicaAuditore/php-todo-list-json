@@ -1,33 +1,28 @@
 # php-todo-list-json
 
-Esercizio di oggi: PHP ToDo List JSON
+Esercizio: PHP ToDo List JSON
 nome repo: php-todo-list-json
 
 PARTE I
 
-Descrizione
+Descrizione:
 Dobbiamo creare una web-app che permetta di leggere una lista di Todo.
 Deve essere anche gestita la persistenza dei dati leggendoli da un file JSON.
 Stack
 Html, CSS, VueJS (importato tramite CDN), axios, PHP
 
-Consigli
-Nello svolgere l'esercizio seguite un approccio graduale.
-Prima assicuratevi che la vostra pagina index.php (il vostro front-end) riesca a comunicare correttamente con il vostro script PHP (le vostre "API").
-Solo a questo punto sarà utile passare alla lettura della lista da un file JSON.
-
-Bonus
+Bonus:
 Mostrare lo stato del task → se completato, barrare il testo
 
 PARTE II
 
-Descrizione
+Descrizione:
 Aggiungiamo la possibilità di scrivere nella lista di Todo.
 Creare un apposito form in cui è possibile aggiungere il testo di un nuovo task.
 La sottomissione del form verrà inviata ad una nuova pagina che si occuperà di salvare il nuovo task nella lista dei Todo.
 Estendiamo la gestione della persistenza dei dati scrivendo le modifiche nel file JSON utilizzato.
 
-Bonus
+Bonus:
 
 1. Permettere di segnare un task come completato facendo click sul testo
 2. Permettere il toggle del task (completato/non completato)
