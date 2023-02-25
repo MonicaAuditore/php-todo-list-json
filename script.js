@@ -31,9 +31,23 @@ createApp({
     },
 
     changeDone(index) {
-      this.lista[index].done = !this.lista[index].done;
+      axios
+        //per inviare i dati usiamo post
+        .post(
+          "./modify.php",
+          //secondo argomento: con il metoto get usavamo params, con il metodo post quello che vogliamo inviare è un oggetto normale
+          {
+            changeDone: this.lista[index].done,
+          },
+          //questo serve per dire che i dati arrivano da un form, è una coppia chiave:valore
+          { headers: { "Content-Type": "multipart/form-data" } }
+        )
+        .then((response) => {
+          this.lista[index].done = !this.lista[index].done;
+          console.log("Task done modificato con successo");
+        });
     },
-    inserisciNewTask() {
+    addNewTask() {
       axios
         //per inviare i dati usiamo post
         .post(

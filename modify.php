@@ -7,16 +7,16 @@ $doDoListString = file_get_contents('database.json');
 $todoArray = json_decode($doDoListString, true);
 
 //questi sono i dati che ho inviato che vengono presi in questo modo
-$newtext = $_POST['newtext'];
+$changeDone = $_POST['changeDone'];
 
-//creo un oggetto associativo con il dato che mi sono inviata
-$newtextTransform = array(
-  'text' =>  $newtext, 
-  'done' => false
-);
-
-// Aggiungi il nuovo oggetto all'array
-$todoArray[] = $newtextTransform;
+//trovo l'oggetto corrispondente al task selezionato
+foreach($todoArray as $index => $singleTask) {
+  if($singleTask['done'] == $changeDone) {
+    //modifico il valore di done dell'oggetto
+    $singleTask['done'] = !$changeDone;
+    break;
+  }
+}
 
 //trasformo con encode il nuovo array aggiornato in json
 $todoArrayEncoded = json_encode($todoArray);
