@@ -48,7 +48,6 @@ createApp({
         .then((response) => {
           const newTask = { text: this.newTask, done: false };
           this.lista.push(newTask);
-          this.newTask = "";
           console.log("Task aggiunto con successo");
           this.newTask.text = ""; //svuoto il campo dell'input text
         });
