@@ -205,3 +205,31 @@ h1 {
     font-size: 80px;
   }
 }
+
+@media (max-width: 425px) {
+  h1 {
+    font-size: 48px;
+  }
+  .formMemo {
+    flex-direction: column;
+  }
+  .formMemo input {
+    margin-right: 0px;
+    padding: 21px 27px;
+  }
+
+  button {
+    width: 50%;
+    margin-top: 25px;
+  }
+
+  h3,
+  button,
+  .formMemo input {
+    font-size: 17px;
+  }
+
+  .todoList {
+    padding: 11px 25px;
+  }
+}
